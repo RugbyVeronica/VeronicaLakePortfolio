@@ -1,0 +1,342 @@
+/* Global attributes begin here */
+:root {
+    --dark-bg: #38485c;
+    --light-bg: #ebedef;
+    --primary: #9EBDDC;
+    --secondary: #708090;
+    --edge-margin: 60px;
+    --global-margin: 5%;
+    
+}
+
+* {
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+/* Header begins here */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+    padding-top: .5%;
+    background-color: var(--dark-bg);
+    color: var(--primary);
+}
+
+header #h1-bg { 
+    position: relative; /* h1's parent div */
+    left: -1%;
+    background-color: var(--primary)
+}
+
+header h1::before {
+    background-image: url('../../assets/images/icon.png');
+    background-size: 45px 45px;
+    display: inline-block;
+    width: 45px; 
+    height: 45px;
+    position: absolute;
+    left: 2.5%;
+    content:"";
+}
+
+header h1 {
+    margin: 0 10px 0 calc(var(--edge-margin)*1.2);
+    padding: 5px;
+    color: var(--dark-bg);
+    font-size: 45px;
+    z-index: 1; /* Puts h1 positionally above its parent div */
+}
+
+nav {
+    display: block;
+    margin-right: var(--edge-margin);
+    float: right;
+    font-size: 20px;
+}
+
+a {
+    padding: 3px 9px;
+    border-bottom: 4px solid var(--primary);
+    margin: 0 3px;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/* Backdrop Image begins here */
+figure {
+    position: relative; /* Exists so that subtitle div can be placed relative to the background image */
+}
+
+#frame {
+    width: 100%;
+    height: 210px;
+    background-image: url('../../assets/images/banner.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#fig-bg {
+    position: absolute; /* Subtitle div */
+    right: 0;
+    margin-right: var(--global-margin);
+    bottom: 30px;
+    background-color: var(--primary);
+    z-index: 2; /* Puts div above transparent-icon.png */
+}
+
+#fig-bg > h2 {
+    padding: 10px;
+    color: var(--dark-bg);
+    font-size: 35px;
+}
+
+#fig-icon {
+    right: 0;
+    position: absolute; /* Fig icon div */
+    z-index: 1;
+}
+
+/* Main starts here */
+main section { /* Content will move from left to right and will wrap below */
+    margin: calc(var(--global-margin)/2) var(--global-margin);
+    height: 110vh;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+main section > * { /* Right section 80% */
+    width: 80%;
+    margin-bottom: calc(var(--global-margin)/2);
+    padding-left: calc(var(--global-margin)/2);
+    border-left: 5px solid var(--secondary);
+}
+
+.text-right { /* Left section 20% w/ text aligned to the right */
+    text-align: right;
+    width: 20%;
+    border: none;
+    padding-top: calc(var(--global-margin)/8);
+    padding-right: calc(var(--global-margin)/4);
+}
+
+main section h1 {
+    font-size: 45px;
+    border: none;
+    color: var(--secondary);
+}
+
+/* Grid setup starts here */
+[class*="box"] {
+    position: relative; /* Relative so that the bg div and title card can copy the size and position */
+    margin: 5px;
+    border: 5px solid var(--primary);
+}
+
+.bg { 
+    position: absolute; /* bg div, making sure the tint covers the bacground properly */
+    z-index: 1;
+    left: -.5vw;
+    top: -1.5%;
+    width: 101%;
+    height: 103%;
+    background-color: #192150;
+    opacity: .5;
+    border: 4px solid var(--primary);
+}
+
+.bg:hover {
+    opacity: 0;
+}
+
+.title-card {
+    z-index: 2;
+    position: absolute;
+    background-color: var(--primary);
+    left: -2px;
+    bottom: 16px;
+    padding: 8px;
+}
+
+.title-card h3 {
+    padding: 5px 0;
+    color: var(--dark-bg);
+    font-size: 25px;
+}
+
+.title-card p {
+    color: var(--dark-bg);
+    font-size: 12px;
+}
+
+.box-one {
+    grid-area: box1;
+    background-image: url('../../assets/images/image1.png');
+    background-size: cover;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin: 20px;
+}
+
+.box-two {
+    grid-area: box2;
+    background-image: url('../../assets/images/image0.png');
+    background-size: cover;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin: 20px;
+}
+
+.box-three {
+    grid-area: box3;
+    background-image: url('../../assets/images/filler.png');
+    background-size: cover;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin: 20px;
+}
+
+.box-four {
+    grid-area: box4;
+    background-image: url('../../assets/images/filler.png');
+    background-size: cover;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin: 20px;
+}
+
+.box-five {
+    grid-area: box5;
+    background-image: url('../../assets/images/filler.png');
+    background-size: cover;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin: 20px;
+}
+
+.container {
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5fr 2fr 2fr;
+    grid-template-areas: 
+      "box1 box1"
+      "box2 box3"
+      "box4 box5";
+}
+
+/* Nav setup starts here */
+section nav {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    align-self: center;
+}
+
+section a {
+    color: var(--dark-bg);
+    border-bottom: 4px solid var(--secondary);
+    padding: 3px 5px;
+    align-self: flex-end;
+}
+
+/* Media Query set up */
+@media screen and (max-width: 1120px) {
+    main section h1 {
+        font-size: 4vw;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    /* Header adjustment for smaller screens */
+    header {
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+    }
+
+    header h1 {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 10px var(--edge-margin);
+    }
+
+    header a {
+        border: 0;
+    }
+
+    header h1::before {
+        display: none;
+    }
+  
+    /* <main> adjustment for smaller screens */
+    main section {
+        display: block;
+        height: auto;
+    }
+
+    main section > * {
+        width: 100%;
+        margin-bottom: calc(var(--global-margin)/2);
+    }
+
+    .text-right {
+        text-align: left;
+        width: auto;
+    }
+
+    main section h1 {
+        font-size: 45px;
+    }
+
+    section h1 {
+        margin-top: calc(var(--global-margin)/2);
+    }
+
+    /* Work adjustment for smaller screens */
+    .title-card {
+        position: relative;
+        bottom: -2px;
+    }
+
+    .title-card h3 {
+        font-size: min(25px, 4vw);
+    }
+
+    .title-card p {
+        font-size: min(12px, 2vw);
+    }
+
+    .container {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    [class*="box"] {
+        height: 15vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+
+    .box-one {
+        height: 40vw;
+    }
+  
+    /* Contact Me adjustment for smaller screens */
+    section nav {
+        flex-flow: row wrap; 
+        justify-content: left;
+    }
+}
